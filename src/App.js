@@ -1,4 +1,6 @@
+import { Fragment } from 'react'
 import { Articulos } from "./components/Articulos";
+import { Navbar } from './components/Navbar'
 
 // base de datos
 const ARTICULOS = [
@@ -11,7 +13,10 @@ const ARTICULOS = [
 
 function App() {
   return (
+    <Fragment>
+    <Navbar />
     <Articulos productos={ARTICULOS} />
+  </Fragment>
   );
 }
 
