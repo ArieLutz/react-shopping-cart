@@ -9,12 +9,10 @@ const styles = {
         textAlign: 'center',
         width: 450,
     },
-
-    imgwraper: {
+    imgWrapper: {
         border: '1px solid #000',
-        height: 200
+        height: 250
     },
-
     imgWrapperImg: (img) => {
         return {
             backgroundImage: `url(${img})`,
@@ -24,8 +22,7 @@ const styles = {
             // border: '1px solid #000',
             height: 250
         }
-    }, 
-
+    },
     img: {
         height: '100%'
     },

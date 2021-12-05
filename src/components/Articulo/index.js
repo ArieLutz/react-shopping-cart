@@ -1,19 +1,17 @@
-
 import styles from './estilos'
 import { Button } from '../Button'
 
-export const Articulo = ({id, nombre, precio, imagen}) => {
-    // const {nombre, precio, imagen} = props
+export const Articulo = ({prod, agregarAlCarro}) => {
     return (
         <article style={styles.article}>
-            <div style={styles.imgWrapperImg(imagen)}>
+            <div style={styles.imgWrapperImg(prod.imagen)}>
                 {/* <img style={styles.img} src={imagen}/> */}
             </div>
 
-            <h4 style={styles.h4}>{nombre}</h4>
-            <p style={styles.p}>${precio.toLocaleString()}</p>
+            <h4 style={styles.h4}>{prod.nombre}</h4>
+            <p style={styles.p}>${prod.precio.toLocaleString()}</p>
 
-            <Button />
+            <Button prod={prod} agregarAlCarro={agregarAlCarro}>Add To Cart</Button>
         </article>
     )
 }
