@@ -1,15 +1,16 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Burbuja } from '../Burbuja'
 import styles from './estilos'
 import swal from 'sweetalert'
 import { ContainerCar, ButtonCar, ContainerListArticles, ListArticles, ItemsArticles, ButtonDelete } from './styles'
 import useCompany from '../../hooks/useCompany'
 
+
 export const Carro = ({ cantidad, productos }) => {
+    //Extraigo las variables del hook 
     const {name, days} = useCompany()
 
-
-
+    //Variables de estado
     const [Productos, setProductos] = useState(productos)
     const [mostrarCarro, setMostrarCarro] = useState(false)
 
@@ -38,6 +39,19 @@ export const Carro = ({ cantidad, productos }) => {
             setProductos(Productos.filter((x) => x.id !== id))
         }
     };
+
+    //APlicacion de UseRef para el envio de nombre y direccion a una alerta
+    const inputName = useRef(null)
+
+    const inputDirection = useRef(null)
+  
+
+    //Funcion que mostrara la informacion traida mediante use ref
+    const detailsSale = () => {
+        alert(inputName.current.value,
+              inputDirection.current.value);
+
+    }
 
     let subTotal = Productos.reduce((acum, prod) => (prod.cantidad * prod.precio) + acum, 0)
     let impto = subTotal * 0.15
@@ -86,6 +100,18 @@ export const Carro = ({ cantidad, productos }) => {
                                 <strong>Tiempo de envio</strong>
                                 <strong>{days} dias</strong>
                             </ItemsArticles>
+                            <ItemsArticles>
+                                <strong>Datos del envio</strong>
+                            </ItemsArticles>
+                            <ItemsArticles>
+                                <strong>Nombre:</strong>
+                                <input type="text" ref={inputName}></input>
+                            </ItemsArticles>
+                            <ItemsArticles>
+                                <strong>Direccion:</strong>
+                                <input type="text" ref={inputDirection}></input>
+                            </ItemsArticles>
+                            <ButtonCar onClick={detailsSale}>Procesar Factura</ButtonCar>
                         </ListArticles>
                     </ContainerListArticles>
             }
@@ -93,6 +119,7 @@ export const Carro = ({ cantidad, productos }) => {
 
     )
 }
+
 
 /**
  * 
