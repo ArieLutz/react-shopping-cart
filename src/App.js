@@ -36,6 +36,8 @@ function App() {
     setData({...data})
   }
 
+
+
   // App > Navbar > Carro > Burbuja > Numero de productos
 
   // let cantidad = data.carrito.length
