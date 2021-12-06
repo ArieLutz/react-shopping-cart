@@ -3,9 +3,13 @@ import { Burbuja } from '../Burbuja'
 import styles from './estilos'
 import swal from 'sweetalert'
 import { ContainerCar, ButtonCar, ContainerListArticles, ListArticles, ItemsArticles, ButtonDelete } from './styles'
+import useCompany from '../../hooks/useCompany'
 
 export const Carro = ({ cantidad, productos }) => {
-    
+    const {name, days} = useCompany()
+
+
+
     const [Productos, setProductos] = useState(productos)
     const [mostrarCarro, setMostrarCarro] = useState(false)
 
@@ -15,8 +19,8 @@ export const Carro = ({ cantidad, productos }) => {
    //Alerta de confirmar
    const ConfirmAlert = (id) =>{
     swal({
-        title:"Eliminar articulo",
-        text: "¿Está seguro de eliminar el artículo del carrito de compra?",
+        title:"Carrito de compras",
+        text: "¿Esta seguro de eliminar el producto?",
         buttons: ["No","Si"]
     }).then(respuesta=>{
         if(respuesta){
@@ -73,6 +77,14 @@ export const Carro = ({ cantidad, productos }) => {
                             <ItemsArticles >
                                 <strong>Total a pagar</strong>
                                 <strong>{totalPagar.toLocaleString()}</strong>
+                            </ItemsArticles>
+                            <ItemsArticles>
+                                <strong>Envio por:</strong>
+                                <strong>{name}</strong>
+                            </ItemsArticles>
+                            <ItemsArticles>
+                                <strong>Tiempo de envio</strong>
+                                <strong>{days} dias</strong>
                             </ItemsArticles>
                         </ListArticles>
                     </ContainerListArticles>
