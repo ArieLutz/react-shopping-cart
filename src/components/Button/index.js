@@ -1,7 +1,12 @@
-import styles from './estilos'
+//import styles from './estilos'
+import { ButtonAddToCar } from './styles'
 
 export const Button = ({children, agregarAlCarro, prod}) => {
     return (
-        <button onClick={() => agregarAlCarro(prod)} style={styles.button}>{children}</button>
+        <ButtonAddToCar onClick={() => agregarAlCarro(prod)}>{children}</ButtonAddToCar>
     )
 }
+
+/**
+ * button (Botn agregar al carro)    ButtonAddToCar
+ */

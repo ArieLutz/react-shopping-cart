@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Burbuja } from '../Burbuja'
-import styles from './estilos'
+//import styles from './estilos'
+import { ContainerCar, ButtonCar, ContainerListArticles, ListArticles, ItemsArticles, ButtonDelete } from './styles'
 
 export const Carro = ({ cantidad, productos }) => {
 
@@ -13,44 +14,55 @@ export const Carro = ({ cantidad, productos }) => {
     let totalPagar = subTotal + impto
 
     return (
-        <div style={styles.carroContenedor}>
+        <ContainerCar>
             {cantidad > 0 && <Burbuja cantidad={cantidad} />}
-            <button onClick={handleMostrarCarro} style={styles.carro}>
+            <ButtonCar onClick={handleMostrarCarro}>
                 Carro
-            </button>
+            </ButtonCar>
             {
                 (cantidad > 0 && mostrarCarro) && 
-                    <div style={styles.listaArticulos}>
-                        <ul style={styles.ul}>
+                    <ContainerListArticles>
+                        <ListArticles>
                             {
                                 productos.map(x => {
                                     return (
-                                        <li style={styles.li}>
+                                        <ItemsArticles >
                                             <img height={25} alt={x.nombre} src={x.imagen} />
-                                            <span><button style={styles.deleteButton}>X</button> {x.nombre}</span>
+                                            <span><ButtonDelete>X</ButtonDelete> {x.nombre}</span>
                                             <span>
                                                 ({x.cantidad} x {x.precio.toLocaleString()}) = <strong>{(x.cantidad * x.precio).toLocaleString()}</strong>
                                             </span>
-                                        </li>
+                                        </ItemsArticles>
                                     )
                                 })
                             }
-                            <li style={styles.li}>
+                            <ItemsArticles>
                                 <strong>Sub total</strong>
                                 <strong>{subTotal.toLocaleString()}</strong>
-                            </li>
-                            <li style={styles.li}>
+                            </ItemsArticles>
+                            <ItemsArticles>
                                 <strong>Impuesto</strong>
                                 <strong>{impto.toLocaleString()}</strong>
-                            </li>
-                            <li style={styles.li}>
+                            </ItemsArticles>
+                            <ItemsArticles >
                                 <strong>Total a pagar</strong>
                                 <strong>{totalPagar.toLocaleString()}</strong>
-                            </li>
-                        </ul>
-                    </div>
+                            </ItemsArticles>
+                        </ListArticles>
+                    </ContainerListArticles>
             }
-        </div>
+        </ContainerCar>
 
     )
 }
+
+/**
+ * 
+ * div (contenedor)                        ContainerCar
+ * button (boton del carro)                ButtonCar
+ * div (Contenedor lista de articulos en el carrito)  ContainerListArticles
+ * ul  (Lista de articulos)                           ListArticles
+ * li (items de articulos)                            ItemsArticles
+ * button (boton de eliminar articulo)                ButtonDelete
+ */
+

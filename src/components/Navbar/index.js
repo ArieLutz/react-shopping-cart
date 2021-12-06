@@ -1,11 +1,16 @@
 import { Carro } from '../Carro'
-import styles from './estilos'
+//import styles from './estilos'
+import {Nav} from './styles'
 
 export const Navbar = ({ cantidad, productos }) => {
     return (
-        <nav style={styles.nav}>
+        <Nav>
             <p>Logo</p>
             <Carro cantidad={cantidad} productos={productos} />
-        </nav>
+        </Nav>
     )
 }
+
+/**
+ * nav (Parte superior de la pagina)  Nav
+ */

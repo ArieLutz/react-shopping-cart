@@ -1,11 +1,19 @@
 import styles from './estilos'
+import { BubbleNumber } from './styles'
 
 export const Burbuja = ({ cantidad }) => {
     // let { numero } = props
     // let numero = props.numero
     return (
-        <span style={styles.burbujaNumero}>
+        <BubbleNumber style={styles.burbujaNumero}>
             {cantidad > 9 ? '9+' : cantidad}
-        </span>
+        </BubbleNumber>
     )   
 }
+
+
+/**
+ * span (burbuja) BubbleNumber
+ * se colocan nombres que indiquen que es lo que hay ahi
+ */
+
