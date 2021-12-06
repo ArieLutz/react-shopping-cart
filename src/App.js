@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Articulos } from "./components/Articulos"
 import { Navbar } from './components/Navbar'
+import CompanyDeliveryContext from './context/context'
 
 // base de datos
 const informacion = {
@@ -43,11 +44,20 @@ function App() {
   // let cantidad = data.carrito.length
   let cantidad = data.carrito.reduce((acum, actual) => acum + actual.cantidad, 0)
 
+  const companyData = {
+    name: "DHL",
+    days: "2"
+  }
+
+
   return (
-    <Fragment>
-      <Navbar cantidad={cantidad} productos={data.carrito} />
-      <Articulos agregarAlCarro={agregarAlCarro} data={data} />
-    </Fragment>
+    <CompanyDeliveryContext.Provider value={companyData}>
+      <Fragment>
+         <Navbar cantidad={cantidad} productos={data.carrito} />
+         <Articulos agregarAlCarro={agregarAlCarro} data={data} />
+      </Fragment>
+    </CompanyDeliveryContext.Provider>
+
   );
 }
 
